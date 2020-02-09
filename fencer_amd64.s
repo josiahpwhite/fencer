@@ -12,17 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// func LFence()
-TEXT ·LFence+0(SB),$0-0
+//+build amd64,!gccgo
+
+// func asmLFence()
+TEXT ·asmLFence(SB), 7, $0
 	LFENCE
 	RET
 
-// func MFence()
-TEXT ·MFence+0(SB),$0-0
+// func asmMFence()
+TEXT ·asmMFence(SB), 7, $0
 	MFENCE
 	RET
 
-// func SFence()
-TEXT ·SFence+0(SB),$0-0
+// func asmSFence()
+TEXT ·asmSFence(SB), 7, $0
 	SFENCE
 	RET

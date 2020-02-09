@@ -15,20 +15,24 @@
 // This Go code acts as a fallback for processor architectures other than x86.
 //
 
+// +build 386,!gccgo amd64,!gccgo
+
 package fencer
 
-func LFence()
-func MFence()
-func SFence()
+var lfence func()
+var mfence func()
+var sfence func()
 
-func lfence() {
-    panic("Unsupported on this architecture")
+func init() {
+	initCPU()
 }
 
-func mfence() {
-    panic("Unsupported on this architecture")
+func LFence() {
+	lfence()
 }
-
-func sfence() {
-    panic("Unsupported on this architecture")
+func MFence() {
+	mfence()
+}
+func SFence() {
+	sfence()
 }
